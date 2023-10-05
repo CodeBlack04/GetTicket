@@ -7,6 +7,7 @@ import { ExpirationCompleteListener } from './events/listener/expiration-complet
 import { PaymentCreatedListener } from './events/listener/payment-created-listener';
 
 const start = async () => {
+  console.log('Starting....')
   // these if statements are required to make typescript happy
   if (!process.env.JWT_KEY) {
     throw new Error('Secret key(jwt_key) must be valid.')
