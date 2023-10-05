@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticketclient-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticketclient
+  template:
+    metadata:
+      labels:
+        app: ticketclient
+    spec:
+      containers:
+        - name: ticketclient
+          image: codeblack04/ticketclient
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticketclient-srv
+spec:
+  selector:
+    app: ticketclient
+  type: ClusterIP
+  ports:
+    - name: ticketclient
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
